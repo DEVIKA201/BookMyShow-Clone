@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 from enum import Enum as PyEnum
 
 load_dotenv()
-db_url = os.getenv("BATABASE_URL")
+db_url = os.getenv("DATABASE_URL")
 
 engine = create_engine(db_url)
 
