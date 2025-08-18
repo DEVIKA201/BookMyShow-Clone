@@ -1,23 +1,8 @@
-import os
-from dotenv import load_dotenv
-from sqlalchemy import create_engine, Column, Integer, String, Date,Enum as SEnum, Boolean, ForeignKey, CheckConstraint
-from sqlalchemy.orm import sessionmaker, declarative_base, relationship
+from sqlalchemy import Column, Integer, String, Date,Enum as SEnum, Boolean, ForeignKey, CheckConstraint
+from sqlalchemy.orm import declarative_base, relationship
 from enum import Enum as PyEnum
 
-load_dotenv()
-db_url = os.getenv("DATABASE_URL")
-
-engine = create_engine(db_url)
-
 Base = declarative_base()
-Session = sessionmaker(autocommit = False, autoflush=False, bind = engine)
-
-def get_db():
-    db = Session()
-    try:
-        yield db
-    finally:
-        db.close()
 
 class Location(Base):
     __tablename__= 'locations'
